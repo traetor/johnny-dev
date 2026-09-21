@@ -1,127 +1,93 @@
-<section class="tech-stack section" id="tech-stack">
-    <div class="container">
+<?php
 
-        <div class="section-heading">
-            <span class="section-label">04 / Tech Stack</span>
+$tech_groups_query = new WP_Query([
+        'post_type'      => 'tech_group',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'orderby'        => [
+                'menu_order' => 'ASC',
+                'date'       => 'ASC',
+        ],
+]);
+?>
 
-            <h2>
-                Tools I work with.<br>
-                <span>Across the full web stack.</span>
-            </h2>
-        </div>
+    <section class="tech-stack section" id="tech-stack">
+        <div class="container">
 
-        <div class="tech-grid">
+            <div class="section-heading">
+                <span class="section-label">04 / Tech Stack</span>
 
-            <article class="tech-group tech-group-featured">
-                <span class="tech-category">CMS</span>
+                <h2>
+                    Tools I work with.<br>
+                    <span>Across the full web stack.</span>
+                </h2>
+            </div>
 
-                <h3>WordPress</h3>
+            <?php if ($tech_groups_query->have_posts()) : ?>
 
-                <p>
-                    Custom development, theme implementation,
-                    maintenance and troubleshooting.
-                </p>
+                <div class="tech-grid">
 
-                <div class="tech-items">
-                    <span>WordPress</span>
-                    <span>PHP</span>
-                    <span>SCSS</span>
+                    <?php
+                    $tech_group_number = 1;
+
+                    while ($tech_groups_query->have_posts()) :
+                        $tech_groups_query->the_post();
+
+                        $tech_category = get_field('tech_category');
+                        $tech_description = get_field('tech_description');
+                        $tech_technologies = get_field('tech_technologies');
+
+                        $technologies = $tech_technologies
+                                ? array_filter(array_map('trim', explode(',', $tech_technologies)))
+                                : [];
+
+                        $tech_group_classes = ['tech-group'];
+
+                        if ($tech_group_number === 1) {
+                            $tech_group_classes[] = 'tech-group-featured';
+                        }
+                        ?>
+
+                        <article class="<?php echo esc_attr(implode(' ', $tech_group_classes)); ?>">
+
+                        <span class="tech-category">
+                            <?php echo esc_html($tech_category); ?>
+                        </span>
+
+                            <h3>
+                                <?php the_title(); ?>
+                            </h3>
+
+                            <p>
+                                <?php echo esc_html($tech_description); ?>
+                            </p>
+
+                            <?php if ($technologies) : ?>
+
+                                <div class="tech-items">
+
+                                    <?php foreach ($technologies as $technology) : ?>
+                                        <span>
+                                        <?php echo esc_html($technology); ?>
+                                    </span>
+                                    <?php endforeach; ?>
+
+                                </div>
+
+                            <?php endif; ?>
+
+                        </article>
+
+                        <?php
+                        $tech_group_number++;
+                    endwhile;
+                    ?>
+
                 </div>
-            </article>
 
-
-            <article class="tech-group">
-                <span class="tech-category">Frontend</span>
-
-                <h3>Modern interfaces</h3>
-
-                <p>
-                    Responsive user interfaces and application
-                    development for modern browsers.
-                </p>
-
-                <div class="tech-items">
-                    <span>React</span>
-                    <span>TypeScript</span>
-                    <span>JavaScript</span>
-                    <span>HTML</span>
-                    <span>CSS / SCSS</span>
-                </div>
-            </article>
-
-
-            <article class="tech-group">
-                <span class="tech-category">Backend</span>
-
-                <h3>Server-side development</h3>
-
-                <p>
-                    Backend functionality, application logic
-                    and integration with frontend applications.
-                </p>
-
-                <div class="tech-items">
-                    <span>PHP</span>
-                    <span>Symfony</span>
-                    <span>Node.js</span>
-                    <span>REST API</span>
-                </div>
-            </article>
-
-
-            <article class="tech-group">
-                <span class="tech-category">Database</span>
-
-                <h3>Data layer</h3>
-
-                <p>
-                    Working with relational databases in web
-                    applications and backend services.
-                </p>
-
-                <div class="tech-items">
-                    <span>MySQL</span>
-                    <span>PostgreSQL</span>
-                </div>
-            </article>
-
-
-            <article class="tech-group">
-                <span class="tech-category">Workflow</span>
-
-                <h3>Development tools</h3>
-
-                <p>
-                    Version control, development environments,
-                    CI workflows and project collaboration.
-                </p>
-
-                <div class="tech-items">
-                    <span>Git</span>
-                    <span>Docker</span>
-                    <span>Jenkins</span>
-                    <span>Jira</span>
-                </div>
-            </article>
-
-
-            <article class="tech-group">
-                <span class="tech-category">Mobile</span>
-
-                <h3>Cross-platform development</h3>
-
-                <p>
-                    Experience developing mobile application
-                    interfaces using the React ecosystem.
-                </p>
-
-                <div class="tech-items">
-                    <span>React Native</span>
-                    <span>JavaScript</span>
-                </div>
-            </article>
+            <?php endif; ?>
 
         </div>
+    </section>
 
-    </div>
-</section>
+<?php wp_reset_postdata(); ?>

@@ -75,6 +75,29 @@ function johnny_dev_register_post_types(): void
             'page-attributes',
         ],
     ]);
+
+    register_post_type('tech_group', [
+        'labels' => [
+            'name'          => __('Tech Stack', 'johnny-dev'),
+            'singular_name' => __('Tech Group', 'johnny-dev'),
+            'add_new'       => __('Add Tech Group', 'johnny-dev'),
+            'add_new_item'  => __('Add New Tech Group', 'johnny-dev'),
+            'edit_item'     => __('Edit Tech Group', 'johnny-dev'),
+            'new_item'      => __('New Tech Group', 'johnny-dev'),
+            'search_items'  => __('Search Tech Groups', 'johnny-dev'),
+            'not_found'     => __('No tech groups found.', 'johnny-dev'),
+            'menu_name'     => __('Tech Stack', 'johnny-dev'),
+        ],
+        'public'       => false,
+        'show_ui'      => true,
+        'show_in_menu' => true,
+        'show_in_rest' => true,
+        'menu_icon'    => 'dashicons-editor-code',
+        'supports'     => [
+            'title',
+            'page-attributes',
+        ],
+    ]);
 }
 
 add_action('init', 'johnny_dev_register_post_types');
