@@ -96,3 +96,4 @@ function johnny_dev_social_meta(): void
 }
 
 add_action('wp_head', 'johnny_dev_social_meta', 2);
+require_once get_template_directory() . '/inc/post-types.php';

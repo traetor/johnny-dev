@@ -1,3 +1,17 @@
+<?php
+
+$experience_query = new WP_Query([
+        'post_type'      => 'experience',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'orderby'        => [
+                'menu_order' => 'ASC',
+                'date'       => 'ASC',
+        ],
+]);
+
+?>
+
 <section class="experience section" id="experience">
     <div class="container">
 
@@ -10,106 +24,81 @@
             </h2>
         </div>
 
-        <div class="experience-list">
+        <?php if ($experience_query->have_posts()) : ?>
 
-            <article class="experience-item">
+            <div class="experience-list">
 
-                <div class="experience-period">
-                    <span>2018 — 2024</span>
-                </div>
+                <?php while ($experience_query->have_posts()) : ?>
+                    <?php
+                    $experience_query->the_post();
 
-                <div class="experience-main">
+                    $technologies = array_filter(
+                            array_map(
+                                    'trim',
+                                    explode(',', (string) get_field('experience_technologies'))
+                            )
+                    );
+                    ?>
 
-                    <div class="experience-title">
-                        <div>
-                            <h3>Full-Stack Developer</h3>
-                            <p>Ultimate.Systems</p>
+                    <article class="experience-item">
+
+                        <div class="experience-period">
+                            <span>
+                                <?php echo esc_html(get_field('experience_period')); ?>
+                            </span>
                         </div>
 
-                        <span class="experience-type">
-                            Commercial
-                        </span>
-                    </div>
+                        <div class="experience-main">
 
-                    <p class="experience-description">
-                        Developed and maintained web applications and custom WordPress
-                        websites across frontend and backend environments. Worked with
-                        WordPress, React, JavaScript, TypeScript, PHP, Symfony, REST APIs
-                        and relational databases, including projects delivered from
-                        implementation through testing and production deployment.
-                    </p>
+                            <div class="experience-title">
 
-                    <div class="experience-tags">
-                        <span>WordPress</span>
-                        <span>React</span>
-                        <span>TypeScript</span>
-                        <span>JavaScript</span>
-                        <span>PHP</span>
-                        <span>Symfony</span>
-                        <span>REST API</span>
-                        <span>MySQL</span>
-                    </div>
+                                <div>
+                                    <h3>
+                                        <?php echo esc_html(get_the_title()); ?>
+                                    </h3>
 
-                </div>
+                                    <p>
+                                        <?php echo esc_html(get_field('experience_company')); ?>
+                                    </p>
+                                </div>
 
-            </article>
+                                <span class="experience-type">
+                                    <?php echo esc_html(get_field('experience_type')); ?>
+                                </span>
 
+                            </div>
 
-            <article class="experience-item">
+                            <p class="experience-description">
+                                <?php echo esc_html(get_field('experience_description')); ?>
+                            </p>
 
-                <div class="experience-period">
-                    <span>2024 — Present</span>
-                </div>
+                            <?php if ($technologies) : ?>
 
-                <div class="experience-main">
+                                <div class="experience-tags">
 
-                    <div class="experience-title">
-                        <div>
-                            <h3>Independent Software Development</h3>
-                            <p>Personal projects &amp; independent development</p>
+                                    <?php foreach ($technologies as $technology) : ?>
+
+                                        <span>
+                                            <?php echo esc_html($technology); ?>
+                                        </span>
+
+                                    <?php endforeach; ?>
+
+                                </div>
+
+                            <?php endif; ?>
+
                         </div>
 
-                        <span class="experience-type">
-                            Independent
-                        </span>
-                    </div>
+                    </article>
 
-                    <p class="experience-description">
-                        Building and maintaining independent software projects across
-                        WordPress, frontend and backend development, with a focus on
-                        practical, production-oriented solutions and modern development
-                        workflows.
-                    </p>
+                <?php endwhile; ?>
 
-                    <div class="experience-tags">
-                        <span>WordPress</span>
-                        <span>React</span>
-                        <span>Node.js</span>
-                        <span>TypeScript</span>
-                        <span>JavaScript</span>
-                        <span>PHP</span>
-                        <span>SCSS</span>
-                        <span>REST API</span>
-                        <span>MySQL</span>
-                    </div>
+            </div>
 
-                </div>
+            <?php wp_reset_postdata(); ?>
 
-            </article>
-
-        </div>
-
-
-        <div class="experience-note">
-            <span>Portfolio</span>
-
-            <p>
-                Previous commercial projects were developed as part of my
-                employment and are therefore not presented as personal portfolio
-                work. Client projects are showcased only when publication is
-                permitted by the client.
-            </p>
-        </div>
+        <?php endif; ?>
 
     </div>
 </section>
