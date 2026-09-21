@@ -8,22 +8,24 @@ function johnny_dev_setup(): void
 {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
+
     add_theme_support('html5', [
-        'search-form',
-        'comment-form',
-        'comment-list',
-        'gallery',
-        'caption',
-        'style',
-        'script',
+            'search-form',
+            'comment-form',
+            'comment-list',
+            'gallery',
+            'caption',
+            'style',
+            'script',
     ]);
 
     register_nav_menus([
-        'primary' => __('Primary Menu', 'johnny-dev'),
+            'primary' => __('Primary Menu', 'johnny-dev'),
     ]);
 }
 
 add_action('after_setup_theme', 'johnny_dev_setup');
+
 
 function johnny_dev_enqueue_assets(): void
 {
@@ -31,25 +33,31 @@ function johnny_dev_enqueue_assets(): void
     $js_path = get_template_directory() . '/assets/js/main.js';
 
     wp_enqueue_style(
-        'johnny-dev-main',
-        get_template_directory_uri() . '/assets/css/main.css',
-        [],
-        file_exists($css_path) ? (string) filemtime($css_path) : wp_get_theme()->get('Version')
+            'johnny-dev-main',
+            get_template_directory_uri() . '/assets/css/main.css',
+            [],
+            file_exists($css_path)
+                    ? (string) filemtime($css_path)
+                    : wp_get_theme()->get('Version')
     );
 
     wp_enqueue_script(
-        'johnny-dev-main',
-        get_template_directory_uri() . '/assets/js/main.js',
-        [],
-        file_exists($js_path) ? (string) filemtime($js_path) : wp_get_theme()->get('Version'),
-        true
+            'johnny-dev-main',
+            get_template_directory_uri() . '/assets/js/main.js',
+            [],
+            file_exists($js_path)
+                    ? (string) filemtime($js_path)
+                    : wp_get_theme()->get('Version'),
+            true
     );
 }
 
 add_action('wp_enqueue_scripts', 'johnny_dev_enqueue_assets');
 
+
 // Disable WordPress admin bar on the frontend.
 add_filter('show_admin_bar', '__return_false');
+
 
 function johnny_dev_meta_description(): void
 {
@@ -63,6 +71,7 @@ function johnny_dev_meta_description(): void
 }
 
 add_action('wp_head', 'johnny_dev_meta_description', 1);
+
 
 function johnny_dev_social_meta(): void
 {
@@ -96,4 +105,29 @@ function johnny_dev_social_meta(): void
 }
 
 add_action('wp_head', 'johnny_dev_social_meta', 2);
+
+
+function johnny_dev_acf_admin_notice(): void
+{
+    if (function_exists('get_field')) {
+        return;
+    }
+
+    ?>
+    <div class="notice notice-error">
+        <p>
+            <?php
+            echo esc_html__(
+                    'Johnny Dev requires Advanced Custom Fields (ACF) to manage theme content.',
+                    'johnny-dev'
+            );
+            ?>
+        </p>
+    </div>
+    <?php
+}
+
+add_action('admin_notices', 'johnny_dev_acf_admin_notice');
+
+
 require_once get_template_directory() . '/inc/post-types.php';

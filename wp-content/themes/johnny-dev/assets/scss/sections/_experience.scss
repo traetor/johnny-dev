@@ -69,44 +69,17 @@
   }
 }
 
-.experience-note {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 50px;
-  margin-top: 35px;
-
-  > span {
-    color: var(--accent-light);
-    font-family: monospace;
-    font-size: 12px;
-    text-transform: uppercase;
-  }
-
-  p {
-    max-width: 700px;
-    margin: 0;
-    color: var(--text-muted);
-    font-size: 13px;
-    line-height: 1.7;
-  }
-}
-
 @include tablet {
-  .experience-item,
-  .experience-note {
+  .experience-item {
     grid-template-columns: 150px 1fr;
     gap: 30px;
   }
 }
 
 @include mobile {
-  .experience-item,
-  .experience-note {
+  .experience-item {
     grid-template-columns: 1fr;
     gap: 20px;
-  }
-
-  .experience-item {
     padding: 38px 0;
   }
 

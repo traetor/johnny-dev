@@ -206,7 +206,7 @@ $projects_query = new WP_Query([
                                 </div>
 
                                 <h3>
-                                    <?php the_title(); ?>
+                                    <?php echo esc_html(get_the_title()); ?>
                                 </h3>
 
                                 <p class="project-description">
@@ -310,11 +310,6 @@ $projects_query = new WP_Query([
 
 
             <div class="projects-footer">
-                <p>
-                    More projects and client work will be added as they
-                    become available for public presentation.
-                </p>
-
                 <a
                         href="https://github.com/traetor"
                         target="_blank"

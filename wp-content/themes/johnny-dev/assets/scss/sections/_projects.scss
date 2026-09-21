@@ -465,19 +465,10 @@
 .projects-footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 40px;
   margin-top: 80px;
   padding-top: 30px;
   border-top: 1px solid var(--border);
-
-  p {
-    max-width: 520px;
-    margin: 0;
-    color: var(--text-muted);
-    font-size: 13px;
-    line-height: 1.7;
-  }
 
   a {
     display: inline-flex;
@@ -581,10 +572,5 @@
 
   .portfolio-preview-code {
     display: none;
-  }
-
-  .projects-footer {
-    align-items: flex-start;
-    flex-direction: column;
   }
 }

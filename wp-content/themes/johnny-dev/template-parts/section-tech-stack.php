@@ -55,7 +55,7 @@ $tech_groups_query = new WP_Query([
                         </span>
 
                             <h3>
-                                <?php the_title(); ?>
+                                <?php echo esc_html(get_the_title()); ?>
                             </h3>
 
                             <p>

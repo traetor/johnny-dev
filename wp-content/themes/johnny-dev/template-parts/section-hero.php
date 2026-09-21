@@ -26,14 +26,14 @@
 
                 <a
                         class="button button-primary"
-                        href="<?php echo esc_attr(get_field('hero_primary_cta_url')); ?>"
+                        href="<?php echo esc_url(get_field('hero_primary_cta_url')); ?>"
                 >
                     <?php echo esc_html(get_field('hero_primary_cta_text')); ?>
                 </a>
 
                 <a
                         class="button button-secondary"
-                        href="<?php echo esc_attr(get_field('hero_secondary_cta_url')); ?>"
+                        href="<?php echo esc_url(get_field('hero_secondary_cta_url')); ?>"
                 >
                     <?php echo esc_html(get_field('hero_secondary_cta_text')); ?>
                 </a>
