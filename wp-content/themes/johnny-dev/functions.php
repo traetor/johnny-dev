@@ -27,18 +27,21 @@ add_action('after_setup_theme', 'johnny_dev_setup');
 
 function johnny_dev_enqueue_assets(): void
 {
+    $css_path = get_template_directory() . '/assets/css/main.css';
+    $js_path = get_template_directory() . '/assets/js/main.js';
+
     wp_enqueue_style(
         'johnny-dev-main',
         get_template_directory_uri() . '/assets/css/main.css',
         [],
-        wp_get_theme()->get('Version')
+        file_exists($css_path) ? (string) filemtime($css_path) : wp_get_theme()->get('Version')
     );
 
     wp_enqueue_script(
         'johnny-dev-main',
         get_template_directory_uri() . '/assets/js/main.js',
         [],
-        wp_get_theme()->get('Version'),
+        file_exists($js_path) ? (string) filemtime($js_path) : wp_get_theme()->get('Version'),
         true
     );
 }
@@ -47,3 +50,43 @@ add_action('wp_enqueue_scripts', 'johnny_dev_enqueue_assets');
 
 // Disable WordPress admin bar on the frontend.
 add_filter('show_admin_bar', '__return_false');
+
+function johnny_dev_meta_description(): void
+{
+    if (!is_front_page()) {
+        return;
+    }
+
+    $description = 'Full-Stack Web Developer specializing in custom WordPress development, PHP, React, TypeScript and modern web applications.';
+
+    echo '<meta name="description" content="' . esc_attr($description) . '">' . "\n";
+}
+
+add_action('wp_head', 'johnny_dev_meta_description', 1);
+
+function johnny_dev_social_meta(): void
+{
+    if (!is_front_page()) {
+        return;
+    }
+
+    $title = 'Johnny Dev | Full-Stack Web Developer';
+
+    $description = 'Full-Stack Web Developer specializing in custom WordPress development, PHP, React, TypeScript and modern web applications.';
+
+    $url = home_url('/');
+
+    ?>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="<?php echo esc_attr($title); ?>">
+    <meta property="og:description" content="<?php echo esc_attr($description); ?>">
+    <meta property="og:url" content="<?php echo esc_url($url); ?>">
+    <meta property="og:site_name" content="Johnny Dev">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="<?php echo esc_attr($title); ?>">
+    <meta name="twitter:description" content="<?php echo esc_attr($description); ?>">
+    <?php
+}
+
+add_action('wp_head', 'johnny_dev_social_meta', 2);

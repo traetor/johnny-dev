@@ -233,7 +233,7 @@
                     </div>
 
                     <div class="project-status">
-                        <span class="status-dot"></span>
+                        <span class="status-dot" aria-hidden="true"></span>
                         Currently in development
                     </div>
 

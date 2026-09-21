@@ -10,6 +10,10 @@
 
 <?php wp_body_open(); ?>
 
+<a class="skip-link" href="#main-content">
+    Skip to main content
+</a>
+
 <header class="site-header">
     <div class="container header-inner">
 
@@ -52,4 +56,4 @@
     </div>
 </header>
 
-<main>
+<main id="main-content">

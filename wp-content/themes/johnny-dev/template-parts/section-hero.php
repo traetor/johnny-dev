@@ -5,7 +5,7 @@
         <div class="hero-content">
 
             <div class="hero-status">
-                <span class="status-dot"></span>
+                <span class="status-dot" aria-hidden="true"></span>
                 Available for freelance projects
             </div>
 

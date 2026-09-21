@@ -21,7 +21,7 @@
             <div class="contact-content">
 
                 <div class="contact-status">
-                    <span class="status-dot"></span>
+                    <span class="status-dot" aria-hidden="true"></span>
 
                     <div>
                         <strong>Available for new projects</strong>

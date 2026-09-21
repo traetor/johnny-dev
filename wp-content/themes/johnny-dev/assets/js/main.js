@@ -69,6 +69,33 @@
     });
   };
 
+  // assets/ts/modules/back-to-top.ts
+  var initBackToTop = () => {
+    const links = document.querySelectorAll('a[href="#top"]');
+    if (!links.length) {
+      return;
+    }
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    );
+    links.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        event.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: prefersReducedMotion.matches ? "auto" : "smooth"
+        });
+        if (window.location.hash) {
+          history.replaceState(
+            null,
+            "",
+            `${window.location.pathname}${window.location.search}`
+          );
+        }
+      });
+    });
+  };
+
   // assets/ts/modules/header-scroll.ts
   var initHeaderScroll = () => {
     const header = document.querySelector(".site-header");
@@ -201,5 +228,6 @@
     initHeaderScroll();
     initActiveNavigation();
     initScrollReveal();
+    initBackToTop();
   });
 })();
