@@ -6,27 +6,36 @@
 
             <div class="hero-status">
                 <span class="status-dot" aria-hidden="true"></span>
-                Available for freelance projects
+
+                <?php echo esc_html(get_field('hero_status')); ?>
             </div>
 
             <h1>
-                I build web experiences
-                <span>that work.</span>
+                <?php echo esc_html(get_field('hero_title')); ?>
+
+                <span>
+                    <?php echo esc_html(get_field('hero_title_accent')); ?>
+                </span>
             </h1>
 
             <p class="hero-description">
-                Full-Stack Web Developer with 5+ years of commercial experience
-                building modern web applications and custom WordPress websites.
+                <?php echo esc_html(get_field('hero_description')); ?>
             </p>
 
             <div class="hero-actions">
 
-                <a class="button button-primary" href="#projects">
-                    View my work
+                <a
+                        class="button button-primary"
+                        href="<?php echo esc_attr(get_field('hero_primary_cta_url')); ?>"
+                >
+                    <?php echo esc_html(get_field('hero_primary_cta_text')); ?>
                 </a>
 
-                <a class="button button-secondary" href="#contact">
-                    Contact me
+                <a
+                        class="button button-secondary"
+                        href="<?php echo esc_attr(get_field('hero_secondary_cta_url')); ?>"
+                >
+                    <?php echo esc_html(get_field('hero_secondary_cta_text')); ?>
                 </a>
 
             </div>
@@ -47,6 +56,7 @@
             <div class="code-window">
 
                 <div class="code-header">
+
                     <div class="code-dots">
                         <span></span>
                         <span></span>
@@ -54,6 +64,7 @@
                     </div>
 
                     <span>developer.php</span>
+
                 </div>
 
                 <pre><code><span class="code-purple">&lt;?php</span>

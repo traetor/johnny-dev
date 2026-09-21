@@ -5,61 +5,57 @@
             <span class="section-label">01 / About</span>
 
             <h2>
-                Building for the web<br>
-                <span>from idea to production.</span>
+                <?php echo esc_html(get_field('about_title')); ?><br>
+
+                <span>
+                    <?php echo esc_html(get_field('about_title_accent')); ?>
+                </span>
             </h2>
         </div>
 
         <div class="about-grid">
 
             <div class="about-intro">
+
                 <p class="about-lead">
-                    I'm Jan Król, a Full-Stack Web Developer with more than
-                    five years of commercial experience building and maintaining
-                    web applications.
+                    <?php echo esc_html(get_field('about_intro')); ?>
                 </p>
+
             </div>
 
             <div class="about-content">
 
-                <p>
-                    My commercial background covers both frontend and backend
-                    development, including React, JavaScript, TypeScript,
-                    PHP, Symfony and Node.js.
-                </p>
-
-                <p>
-                    I've also worked with WordPress projects from design
-                    implementation through development, testing and production
-                    deployment.
-                </p>
-
-                <p>
-                    I enjoy working across the stack — understanding the problem,
-                    building the solution and making sure it works reliably
-                    in production.
-                </p>
+                <?php echo wp_kses_post(get_field('about_description')); ?>
 
                 <div class="about-meta">
 
                     <div>
-                        <span class="about-meta-value">5+</span>
+                        <span class="about-meta-value">
+                            <?php echo esc_html(get_field('about_experience_value')); ?>
+                        </span>
+
                         <span class="about-meta-label">
-                            Years commercial experience
+                            <?php echo esc_html(get_field('about_experience_label')); ?>
                         </span>
                     </div>
 
                     <div>
-                        <span class="about-meta-value">Full-Stack</span>
+                        <span class="about-meta-value">
+                            <?php echo esc_html(get_field('about_focus_value')); ?>
+                        </span>
+
                         <span class="about-meta-label">
-                            Frontend &amp; backend development
+                            <?php echo esc_html(get_field('about_focus_label')); ?>
                         </span>
                     </div>
 
                     <div>
-                        <span class="about-meta-value">Remote</span>
+                        <span class="about-meta-value">
+                            <?php echo esc_html(get_field('about_work_style_value')); ?>
+                        </span>
+
                         <span class="about-meta-label">
-                            Available for projects
+                            <?php echo esc_html(get_field('about_work_style_label')); ?>
                         </span>
                     </div>
 

@@ -1,3 +1,9 @@
+<?php
+
+$contact_email = get_field('contact_email');
+
+?>
+
 <section class="contact section" id="contact">
     <div class="container">
 
@@ -7,16 +13,17 @@
                 <span class="section-label">06 / Contact</span>
 
                 <h2>
-                    Have a project<br>
-                    <span>in mind?</span>
+                    <?php echo esc_html(get_field('contact_title')); ?><br>
+
+                    <span>
+                        <?php echo esc_html(get_field('contact_title_accent')); ?>
+                    </span>
                 </h2>
 
                 <p>
-                    I'm available for remote freelance projects and contract
-                    work across WordPress and full-stack web development.
+                    <?php echo esc_html(get_field('contact_description')); ?>
                 </p>
             </div>
-
 
             <div class="contact-content">
 
@@ -24,42 +31,42 @@
                     <span class="status-dot" aria-hidden="true"></span>
 
                     <div>
-                        <strong>Available for new projects</strong>
+                        <strong>
+                            <?php echo esc_html(get_field('contact_status')); ?>
+                        </strong>
 
                         <span>
-                            Remote freelance &amp; contract work
+                            <?php echo esc_html(get_field('contact_status_description')); ?>
                         </span>
                     </div>
                 </div>
 
-
                 <a
-                    class="contact-email"
-                    href="mailto:jasiek.krol.pl@gmail.com"
+                        class="contact-email"
+                        href="mailto:<?php echo esc_attr($contact_email); ?>"
                 >
                     <span class="contact-email-label">
                         Email
                     </span>
 
                     <span class="contact-email-address">
-                        jasiek.krol.pl@gmail.com
+                        <?php echo esc_html($contact_email); ?>
                     </span>
 
                     <span
-                        class="contact-email-arrow"
-                        aria-hidden="true"
+                            class="contact-email-arrow"
+                            aria-hidden="true"
                     >
                         ↗
                     </span>
                 </a>
 
-
                 <div class="contact-links">
 
                     <a
-                        href="https://github.com/traetor"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                            href="<?php echo esc_url(get_field('contact_github_url')); ?>"
+                            target="_blank"
+                            rel="noopener noreferrer"
                     >
                         <span>GitHub</span>
                         <span aria-hidden="true">↗</span>
@@ -72,33 +79,34 @@
 
                 </div>
 
-
                 <p class="contact-note">
-                    Written and asynchronous communication is preferred.
-                    I'm also available for occasional project calls when needed.
+                    <?php echo esc_html(get_field('contact_note')); ?>
                 </p>
 
             </div>
 
         </div>
 
-
         <div class="contact-cta">
 
             <div>
-                <span>Need a WordPress developer?</span>
+                <span>
+                    <?php echo esc_html(get_field('contact_cta_eyebrow')); ?>
+                </span>
 
                 <h3>
-                    Let's build something<br>
-                    that works.
+                    <?php echo esc_html(get_field('contact_cta_title')); ?><br>
+
+                    <?php echo esc_html(get_field('contact_cta_title_accent')); ?>
                 </h3>
             </div>
 
             <a
-                class="button button-primary contact-cta-button"
-                href="mailto:jasiek.krol.pl@gmail.com"
+                    class="button button-primary contact-cta-button"
+                    href="mailto:<?php echo esc_attr($contact_email); ?>"
             >
-                Start a conversation
+                <?php echo esc_html(get_field('contact_cta_button_text')); ?>
+
                 <span aria-hidden="true">↗</span>
             </a>
 

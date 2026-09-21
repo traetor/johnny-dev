@@ -37,10 +37,6 @@
             <a href="#contact">Contact</a>
         </nav>
 
-        <a class="header-cta" href="#contact">
-            Let's talk
-        </a>
-
         <button
                 class="menu-toggle"
                 type="button"
