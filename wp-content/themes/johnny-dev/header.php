@@ -11,18 +11,24 @@
 <?php wp_body_open(); ?>
 
 <header class="site-header">
-    <div class="container">
-        <a href="<?php echo esc_url(home_url('/')); ?>">
-            Johnny Dev
+    <div class="container header-inner">
+
+        <a class="site-logo" href="<?php echo esc_url(home_url('/')); ?>">
+            Johnny<span>Dev</span>
         </a>
 
-        <?php
-        wp_nav_menu([
-            'theme_location' => 'primary',
-            'container'      => 'nav',
-            'fallback_cb'    => false,
-        ]);
-        ?>
+        <nav class="main-nav" aria-label="Primary navigation">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <a class="header-cta" href="#contact">
+            Let's talk
+        </a>
+
     </div>
 </header>
 

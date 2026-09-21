@@ -72,3 +72,6 @@ dist/
 # Default/root placeholder files
 /wp-content/index.php
 /wp-content/themes/index.php
+
+# Sass source maps
+*.css.map

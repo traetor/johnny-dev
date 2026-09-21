@@ -1,0 +1,157 @@
+@use '../abstracts/mixins' as *;
+
+.hero {
+  min-height: calc(100vh - 76px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 650px;
+    height: 650px;
+    right: -200px;
+    top: -150px;
+    background: radial-gradient(
+            circle,
+            rgba(124, 108, 255, 0.14),
+            transparent 65%
+    );
+    pointer-events: none;
+  }
+
+  h1 {
+    max-width: 720px;
+    margin: 0;
+    font-size: clamp(52px, 6vw, 82px);
+    line-height: 0.98;
+    letter-spacing: -4px;
+
+    span {
+      color: var(--accent-light);
+    }
+  }
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 80px;
+  padding-top: 80px;
+  padding-bottom: 100px;
+}
+
+.hero-status {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 12px;
+  margin-bottom: 28px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 12px rgba(74, 222, 128, 0.6);
+}
+
+.hero-description {
+  max-width: 620px;
+  margin: 30px 0 0;
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1.75;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.hero-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 45px;
+
+  span {
+    padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-family: monospace;
+    font-size: 12px;
+  }
+}
+
+
+/* Tablet */
+
+@include tablet {
+  .main-nav {
+    display: none;
+  }
+
+  .hero {
+    min-height: auto;
+
+    h1 {
+      letter-spacing: -2.5px;
+    }
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+
+/* Mobile */
+
+@include mobile {
+  .container {
+    width: min(100% - 32px, 1180px);
+  }
+
+  .header-cta {
+    display: none;
+  }
+
+  .hero-inner {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .code-window pre {
+    padding: 22px;
+    font-size: 12px;
+  }
+}

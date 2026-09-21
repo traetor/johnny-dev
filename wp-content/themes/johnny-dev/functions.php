@@ -28,8 +28,8 @@ add_action('after_setup_theme', 'johnny_dev_setup');
 function johnny_dev_enqueue_assets(): void
 {
     wp_enqueue_style(
-        'johnny-dev-style',
-        get_stylesheet_uri(),
+        'johnny-dev-main',
+        get_template_directory_uri() . '/assets/css/main.css',
         [],
         wp_get_theme()->get('Version')
     );

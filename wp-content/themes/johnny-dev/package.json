@@ -1,0 +1,23 @@
+{
+  "name": "johnny-dev",
+  "version": "1.0.0",
+  "description": "Custom WordPress portfolio theme for a Full-Stack Web Developer.",
+  "private": true,
+  "scripts": {
+    "sass": "sass assets/scss/main.scss assets/css/main.css --style=expanded",
+    "sass:watch": "sass --watch assets/scss/main.scss:assets/css/main.css --style=expanded",
+    "sass:build": "sass assets/scss/main.scss assets/css/main.css --style=compressed --no-source-map"
+  },
+  "keywords": [
+    "wordpress",
+    "portfolio",
+    "wordpress-theme",
+    "php",
+    "scss"
+  ],
+  "author": "Jan Król",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "sass": "^1.93.2"
+  }
+}
