@@ -1,0 +1,98 @@
+@use '../abstracts/mixins' as *;
+
+.error-page {
+  display: flex;
+  min-height: calc(100vh - 76px);
+}
+
+.error-404 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 96px 0;
+}
+
+.error-404-content {
+  max-width: 760px;
+}
+
+.error-404-code {
+  display: block;
+  margin-bottom: 20px;
+  color: var(--accent-light);
+  font-size: clamp(72px, 12vw, 144px);
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -7px;
+  opacity: 0.16;
+}
+
+.error-404-eyebrow {
+  margin-bottom: 16px;
+  color: var(--accent-light);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.error-404 h1 {
+  max-width: 720px;
+  margin-bottom: 24px;
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1;
+  letter-spacing: -3px;
+
+  span {
+    color: var(--accent-light);
+  }
+}
+
+.error-404-description {
+  max-width: 580px;
+  margin-bottom: 36px;
+  color: var(--text-muted);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+
+@include tablet {
+  .error-page {
+    min-height: calc(100dvh - 70px);
+  }
+
+  .error-404 {
+    padding: 72px 0;
+  }
+
+  .error-404-code {
+    letter-spacing: -5px;
+  }
+
+  .error-404 h1 {
+    letter-spacing: -2px;
+  }
+}
+
+
+@include mobile {
+  .error-404 {
+    padding: 56px 0;
+  }
+
+  .error-404-code {
+    margin-bottom: 16px;
+    letter-spacing: -4px;
+  }
+
+  .error-404 h1 {
+    margin-bottom: 20px;
+    letter-spacing: -1.5px;
+  }
+
+  .error-404-description {
+    margin-bottom: 30px;
+    font-size: 16px;
+  }
+}

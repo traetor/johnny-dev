@@ -73,6 +73,18 @@ function johnny_dev_meta_description(): void
 add_action('wp_head', 'johnny_dev_meta_description', 1);
 
 
+function johnny_dev_canonical_url(): void
+{
+    if (!is_front_page()) {
+        return;
+    }
+
+    echo '<link rel="canonical" href="' . esc_url(home_url('/')) . '">' . "\n";
+}
+
+add_action('wp_head', 'johnny_dev_canonical_url', 2);
+
+
 function johnny_dev_social_meta(): void
 {
     if (!is_front_page()) {
@@ -104,7 +116,7 @@ function johnny_dev_social_meta(): void
     <?php
 }
 
-add_action('wp_head', 'johnny_dev_social_meta', 2);
+add_action('wp_head', 'johnny_dev_social_meta', 3);
 
 
 function johnny_dev_acf_admin_notice(): void
