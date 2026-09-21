@@ -1,0 +1,79 @@
+@use '../abstracts/mixins' as *;
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+
+.service-card {
+  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  padding: 34px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition:
+          background 0.25s ease,
+          transform 0.25s ease;
+
+  &:hover {
+    background: var(--surface);
+  }
+
+  h3 {
+    max-width: 280px;
+    margin: 28px 0 16px;
+    font-size: 21px;
+    line-height: 1.25;
+    letter-spacing: -0.4px;
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+
+.service-number {
+  color: var(--accent-light);
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+  padding-top: 30px;
+
+  span {
+    padding: 5px 8px;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    color: var(--text-muted);
+    font-family: monospace;
+    font-size: 10px;
+  }
+}
+
+@include tablet {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include mobile {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    min-height: 290px;
+    padding: 28px;
+  }
+}
