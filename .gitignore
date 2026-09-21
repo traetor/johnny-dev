@@ -1,0 +1,74 @@
+# ==========================================
+# Johnny Dev - WordPress .gitignore
+# ==========================================
+
+# WordPress core
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/license.txt
+/readme.html
+/xmlrpc.php
+
+# Local WordPress configuration
+/wp-config.php
+
+# Uploads
+/wp-content/uploads/
+
+# Cache
+/wp-content/cache/
+/wp-content/upgrade/
+
+# Plugins
+/wp-content/plugins/
+
+# Default WordPress themes
+/wp-content/themes/twentytwenty*/
+/wp-content/themes/twentytwentyone/
+/wp-content/themes/twentytwentytwo/
+/wp-content/themes/twentytwentythree/
+/wp-content/themes/twentytwentyfour/
+/wp-content/themes/twentytwentyfive/
+/wp-content/themes/twentytwentysix/
+
+# Logs
+*.log
+debug.log
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE / editors
+.idea/
+.vscode/
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build/cache files
+.cache/
+dist/
+.tmp/
+
+# WordPress generated/content files
+/wp-content/languages/
+/wp-content/uploads/
+/wp-content/cache/
+/wp-content/upgrade/
+
+# Plugins
+/wp-content/plugins/
+
+# Default/root placeholder files
+/wp-content/index.php
+/wp-content/themes/index.php
