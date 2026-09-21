@@ -211,11 +211,7 @@
                     <h3>Johnny Dev Portfolio</h3>
 
                     <p class="project-description">
-                        Custom developer portfolio built as a WordPress theme
-                        without a page builder. The project uses modular PHP
-                        template parts, a structured SCSS architecture and
-                        responsive components built from scratch.
-                    </p>
+                        Custom WordPress portfolio theme built from scratch with modular PHP template parts, SCSS and TypeScript, deployed as a production WordPress website.
 
                     <div class="project-features">
                         <span>Custom theme</span>
@@ -234,7 +230,7 @@
 
                     <div class="project-status">
                         <span class="status-dot" aria-hidden="true"></span>
-                        Currently in development
+                        Live
                     </div>
 
                 </div>

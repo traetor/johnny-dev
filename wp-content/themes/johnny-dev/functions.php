@@ -76,16 +76,22 @@ function johnny_dev_social_meta(): void
 
     $url = home_url('/');
 
+    $image = get_template_directory_uri() . '/assets/images/og-image.png';
+
     ?>
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?php echo esc_attr($title); ?>">
     <meta property="og:description" content="<?php echo esc_attr($description); ?>">
     <meta property="og:url" content="<?php echo esc_url($url); ?>">
     <meta property="og:site_name" content="Johnny Dev">
+    <meta property="og:image" content="<?php echo esc_url($image); ?>">
+    <meta property="og:image:alt" content="Johnny Dev - Full-Stack Web Developer">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?php echo esc_attr($title); ?>">
     <meta name="twitter:description" content="<?php echo esc_attr($description); ?>">
+    <meta name="twitter:image" content="<?php echo esc_url($image); ?>">
+    <meta name="twitter:image:alt" content="Johnny Dev - Full-Stack Web Developer">
     <?php
 }
 
