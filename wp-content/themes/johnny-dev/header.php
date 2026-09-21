@@ -6,18 +6,26 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body id="top" <?php body_class(); ?>>
 
 <?php wp_body_open(); ?>
 
 <header class="site-header">
     <div class="container header-inner">
 
-        <a class="site-logo" href="<?php echo esc_url(home_url('/')); ?>">
+        <a
+                class="site-logo"
+                href="#top"
+                aria-label="Back to top"
+        >
             Johnny<span>Dev</span>
         </a>
 
-        <nav class="main-nav" aria-label="Primary navigation">
+        <nav
+                class="main-nav"
+                id="primary-navigation"
+                aria-label="Primary navigation"
+        >
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
             <a href="#services">Services</a>
@@ -28,6 +36,18 @@
         <a class="header-cta" href="#contact">
             Let's talk
         </a>
+
+        <button
+                class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="primary-navigation"
+                aria-label="Open navigation"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
     </div>
 </header>

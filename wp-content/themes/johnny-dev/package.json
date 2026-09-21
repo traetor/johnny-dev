@@ -6,7 +6,11 @@
   "scripts": {
     "sass": "sass assets/scss/main.scss assets/css/main.css --style=expanded",
     "sass:watch": "sass --watch assets/scss/main.scss:assets/css/main.css --style=expanded",
-    "sass:build": "sass assets/scss/main.scss assets/css/main.css --style=compressed --no-source-map"
+    "sass:build": "sass assets/scss/main.scss assets/css/main.css --style=compressed --no-source-map",
+    "ts": "esbuild assets/ts/main.ts --bundle --outfile=assets/js/main.js",
+    "ts:watch": "esbuild assets/ts/main.ts --bundle --outfile=assets/js/main.js --watch",
+    "ts:check": "tsc --noEmit",
+    "ts:build": "tsc --noEmit && esbuild assets/ts/main.ts --bundle --minify --outfile=assets/js/main.js"
   },
   "keywords": [
     "wordpress",
@@ -18,6 +22,8 @@
   "author": "Jan Król",
   "license": "UNLICENSED",
   "devDependencies": {
-    "sass": "^1.93.2"
+    "esbuild": "^0.28.2",
+    "sass": "^1.93.2",
+    "typescript": "^7.0.2"
   }
 }

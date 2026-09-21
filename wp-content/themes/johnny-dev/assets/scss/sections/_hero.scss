@@ -99,9 +99,6 @@
 /* Tablet */
 
 @include tablet {
-  .main-nav {
-    display: none;
-  }
 
   .hero {
     min-height: auto;
@@ -121,9 +118,6 @@
 /* Mobile */
 
 @include mobile {
-  .container {
-    width: min(100% - 32px, 1180px);
-  }
 
   .header-cta {
     display: none;
