@@ -29,6 +29,29 @@ function johnny_dev_register_post_types(): void
             'page-attributes',
         ],
     ]);
+
+    register_post_type('service', [
+        'labels' => [
+            'name'          => __('Services', 'johnny-dev'),
+            'singular_name' => __('Service', 'johnny-dev'),
+            'add_new'       => __('Add Service', 'johnny-dev'),
+            'add_new_item'  => __('Add New Service', 'johnny-dev'),
+            'edit_item'     => __('Edit Service', 'johnny-dev'),
+            'new_item'      => __('New Service', 'johnny-dev'),
+            'search_items'  => __('Search Services', 'johnny-dev'),
+            'not_found'     => __('No services found.', 'johnny-dev'),
+            'menu_name'     => __('Services', 'johnny-dev'),
+        ],
+        'public'       => false,
+        'show_ui'      => true,
+        'show_in_menu' => true,
+        'show_in_rest' => true,
+        'menu_icon'    => 'dashicons-admin-tools',
+        'supports'     => [
+            'title',
+            'page-attributes',
+        ],
+    ]);
 }
 
 add_action('init', 'johnny_dev_register_post_types');

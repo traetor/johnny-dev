@@ -1,3 +1,17 @@
+<?php
+
+$services_query = new WP_Query([
+        'post_type'      => 'service',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'orderby'        => [
+                'menu_order' => 'ASC',
+                'date'       => 'ASC',
+        ],
+]);
+
+?>
+
 <section class="services section" id="services">
     <div class="container">
 
@@ -10,122 +24,65 @@
             </h2>
         </div>
 
-        <div class="services-grid">
+        <?php if ($services_query->have_posts()) : ?>
 
-            <article class="service-card">
-                <span class="service-number">01</span>
+            <div class="services-grid">
 
-                <h3>Custom WordPress Development</h3>
+                <?php $service_number = 1; ?>
 
-                <p>
-                    Custom WordPress websites built around the project's
-                    requirements, with clean implementation, responsive layouts
-                    and maintainable code.
-                </p>
+                <?php while ($services_query->have_posts()) : ?>
+                    <?php
+                    $services_query->the_post();
 
-                <div class="service-tags">
-                    <span>WordPress</span>
-                    <span>PHP</span>
-                    <span>SCSS</span>
-                </div>
-            </article>
+                    $technologies = array_filter(
+                            array_map(
+                                    'trim',
+                                    explode(',', (string) get_field('service_technologies'))
+                            )
+                    );
+                    ?>
 
+                    <article class="service-card">
 
-            <article class="service-card">
-                <span class="service-number">02</span>
+                        <span class="service-number">
+                            <?php echo esc_html(sprintf('%02d', $service_number)); ?>
+                        </span>
 
-                <h3>Figma to WordPress</h3>
+                        <h3>
+                            <?php echo esc_html(get_the_title()); ?>
+                        </h3>
 
-                <p>
-                    Turning provided designs into responsive WordPress websites,
-                    from frontend implementation through testing and production
-                    deployment.
-                </p>
+                        <p>
+                            <?php echo esc_html(get_field('service_description')); ?>
+                        </p>
 
-                <div class="service-tags">
-                    <span>Figma</span>
-                    <span>WordPress</span>
-                    <span>Responsive</span>
-                </div>
-            </article>
+                        <?php if ($technologies) : ?>
 
+                            <div class="service-tags">
 
-            <article class="service-card">
-                <span class="service-number">03</span>
+                                <?php foreach ($technologies as $technology) : ?>
 
-                <h3>WordPress Fixes &amp; Maintenance</h3>
+                                    <span>
+                                        <?php echo esc_html($technology); ?>
+                                    </span>
 
-                <p>
-                    Troubleshooting existing WordPress websites, fixing frontend
-                    and backend issues, implementing improvements and maintaining
-                    existing functionality.
-                </p>
+                                <?php endforeach; ?>
 
-                <div class="service-tags">
-                    <span>Debugging</span>
-                    <span>PHP</span>
-                    <span>WordPress</span>
-                </div>
-            </article>
+                            </div>
 
+                        <?php endif; ?>
 
-            <article class="service-card">
-                <span class="service-number">04</span>
+                    </article>
 
-                <h3>Full-Stack Development</h3>
+                    <?php $service_number++; ?>
 
-                <p>
-                    Development of web application features across frontend and
-                    backend environments using modern JavaScript, TypeScript,
-                    React, Node.js and PHP technologies.
-                </p>
+                <?php endwhile; ?>
 
-                <div class="service-tags">
-                    <span>React</span>
-                    <span>TypeScript</span>
-                    <span>Node.js</span>
-                </div>
-            </article>
+            </div>
 
+            <?php wp_reset_postdata(); ?>
 
-            <article class="service-card">
-                <span class="service-number">05</span>
-
-                <h3>API Integration</h3>
-
-                <p>
-                    Connecting applications and websites with REST APIs,
-                    implementing data flows and integrating frontend interfaces
-                    with backend services.
-                </p>
-
-                <div class="service-tags">
-                    <span>REST API</span>
-                    <span>JavaScript</span>
-                    <span>PHP</span>
-                </div>
-            </article>
-
-
-            <article class="service-card">
-                <span class="service-number">06</span>
-
-                <h3>Existing Application Development</h3>
-
-                <p>
-                    Working with existing codebases to implement features,
-                    resolve bugs and improve applications without requiring
-                    a complete rebuild.
-                </p>
-
-                <div class="service-tags">
-                    <span>Features</span>
-                    <span>Bug Fixes</span>
-                    <span>Maintenance</span>
-                </div>
-            </article>
-
-        </div>
+        <?php endif; ?>
 
     </div>
 </section>
