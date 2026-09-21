@@ -4,6 +4,7 @@
 @use 'base/reset';
 @use 'base/typography';
 @use 'base/global';
+@use 'base/sections';
 
 @use 'components/buttons';
 @use 'components/code-window';
@@ -12,3 +13,5 @@
 @use 'layout/footer';
 
 @use 'sections/hero';
+@use 'sections/about';
+@use 'sections/experience';

@@ -1,0 +1,28 @@
+.section {
+  padding: 130px 0;
+  border-top: 1px solid var(--border);
+}
+
+.section-heading {
+  margin-bottom: 70px;
+
+  h2 {
+    max-width: 850px;
+    margin: 18px 0 0;
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -2.5px;
+
+    span {
+      color: var(--text-muted);
+    }
+  }
+}
+
+.section-label {
+  color: var(--accent-light);
+  font-family: monospace;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
